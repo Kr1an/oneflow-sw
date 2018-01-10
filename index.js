@@ -5,7 +5,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const cors = require('cors');
-const uuid = require('node-uuid');
+const uuid = require('uuid');
 const manager = require('./manager.js')(20);
 const path = require('path');
 let totalRun = 0;
@@ -17,7 +17,7 @@ app.use(cors());
 app.use(bodyParser.json());
 
 
-mongoose.connect(`mongodb://127.0.0.1:27017/jobhub`, { useMongoClient: true });
+mongoose.connect(`mongodb://mongo/jobhub`, { useMongoClient: true });
 
 app.post('/jobrequest', (req, res) => {
   const jr = new JobRequest(req.body);

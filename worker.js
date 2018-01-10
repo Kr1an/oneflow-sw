@@ -28,6 +28,9 @@ module.exports = function () {
     this._proc.stdout.on('data', function (data) {
       console.log(data.toString());
     })
+    this._proc.stderr.on('data', function (data) {
+      console.log(data.toString());
+    })
     this._proc.on('message', function (data) {
       that._cb(null, data);
       that._proc.kill('SIGINT');
